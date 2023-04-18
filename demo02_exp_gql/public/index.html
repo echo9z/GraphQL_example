@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1 style="margin: auto;">Graphql</h1>
+  </div>
+  <script src="../node_modules/axios/dist/axios.js"></script>
+  <script>
+    axios({
+      method: 'POST', // graphql请求查询必须是post
+      url: 'http://localhost:4000/graphql',
+      data: {
+        // 请求体携带variables属性，会里面id属性，替换到$id占位符中
+        query: `mutation deleteArticle($id: ID!) {
+          deleteArticle(_id: $id) {
+            success
+          }
+        }`,
+        variables: {
+          id: 2,
+        }
+      }
+    }).then((res) => {
+      console.log(res.data);
+    })
+    // 更新
+    // axios({
+    //   method: 'POST', // graphql请求查询必须是post
+    //   url: 'http://localhost:4000/graphql',
+    //   data: {
+    //     // 请求体携带variables属性，会里面id属性，替换到$id占位符中
+    //     query: `mutation updateArticles($id: ID!, $article: updateArticleInput!) {
+    //       updateArticle(_id: $id, artArgs: $article) {
+    //         _id,
+    //         title,
+    //         body
+    //       }
+    //     }`,
+    //     variables: {
+    //       id: 2,
+    //       article: {
+    //         title: 'aaa22',
+    //         body: 'bbb22'
+    //       }
+    //     }
+    //   }
+    // }).then((res) => {
+    //   console.log(res.data);
+    // })
+    // 更新文章
+    // axios({
+    //   method: 'POST', // graphql请求查询必须是post
+    //   url: 'http://localhost:4000/graphql',
+    //   data: {
+    //     // 请求体携带variables属性，会里面id属性，替换到$id占位符中
+    //     query: `mutation updateArticles($id: ID!, $article: updateArticleInput!) {
+    //       updateArticle(_id: $id, artArgs: $article) {
+    //         _id,
+    //         title,
+    //         body
+    //       }
+    //     }`,
+    //     variables: {
+    //       id: 2,
+    //       article: {
+    //         title: 'aaa22',
+    //         body: 'bbb22'
+    //       }
+    //     }
+    //   }
+    // }).then((res) => {
+    //   console.log(res.data);
+    // })
+    // 创建文章
+    // axios({
+    //   method: 'POST', // graphql请求查询必须是post
+    //   url: 'http://localhost:4000/graphql',
+    //   data: {
+    //     // 请求体携带variables属性，会里面id属性，替换到$id占位符中
+    //     query: `mutation createArticle($article: createArticleInput!) {
+    //       createArticleUp(artArgs: $article) {
+    //         _id,
+    //         title,
+    //         body
+    //       }
+    //     }`,
+    //     variables: {
+    //       article: {
+    //         title: 'aaa',
+    //         body: 'bbb'
+    //       }
+    //     }
+    //   }
+    // }).then((res) => {
+    //   console.log(res.data);
+    // })
+    // const id = 2 根据id查询文章
+    // axios({
+    //   method: 'POST', // graphql请求查询必须是post
+    //   url: 'http://localhost:4000/graphql',
+    //   data: {
+    //     query: `query getArticleById {
+    //       articleById(_id: ${id}) {
+    //         _id,
+    //         title,
+    //         body
+    //       }
+    //     }`
+    //   }
+    // }).then((res) => {
+    //   console.log(res);
+    //   console.log(res.data);
+    // })
+    // axios({
+    //   method: 'POST', // graphql请求查询必须是post
+    //   url: 'http://localhost:4000/graphql',
+    //   data: {
+    //     query: `query getArticles {
+    //       articles {
+    //         _id,
+    //         title,
+    //         body
+    //       }
+    //     }`
+    //   }
+    // }).then((res) => {
+    //   console.log(res);
+    //   console.log(res.data);
+    // })
+
+    // fetch('http://localhost:4000/graphql', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Accept': 'application/json',
+    //   },
+    //   body: JSON.stringify({query: "{ foo }"})
+    // })
+    //   .then(r => r.json())
+    //   .then(data => console.log('data returned:', data));
+
+    // const http = axios.create({
+    //   baseURL: 'http://localhost:4000'
+    // })
+    // // graphql请求查询必须是post
+    // http.post('/graphql', { query: "{ foo, count }" }).then((res) => {
+    //   console.log(res);
+    //   console.log(res.data);
+    // })
+  </script>
+</body>
+</html>
